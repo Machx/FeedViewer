@@ -15,6 +15,7 @@ static NSString * const kAppleRSSNewsFeed = @"http://images.apple.com/main/rss/h
 @synthesize rssQueue;
 @synthesize newsFeed;
 @synthesize feedError;
+@synthesize psNotification;
 
 -(id)init
 {
@@ -23,13 +24,16 @@ static NSString * const kAppleRSSNewsFeed = @"http://images.apple.com/main/rss/h
 		newsFeed = [[PSFeed alloc] initWithURL:feedURL];
 		rssQueue = [[NSOperationQueue alloc] init];
 		[rssQueue setName:@"com.FeedViewier.rssQueue"];
+		feedError = nil;
+		psNotification = nil;
 	}
 	return self;
 }
 
 -(void)awakeFromNib
 {
-	[[NSNotificationCenter defaultCenter] addObserverForName:PSFeedRefreshingNotification 
+	NSNotificationCenter *notifyCenter = [NSNotificationCenter defaultCenter];
+	self.psNotification = [notifyCenter addObserverForName:PSFeedRefreshingNotification 
 													  object:newsFeed 
 													   queue:rssQueue 
 												  usingBlock:^(NSNotification *arg1) {
@@ -44,7 +48,8 @@ static NSString * const kAppleRSSNewsFeed = @"http://images.apple.com/main/rss/h
 				return;
 			}
 			
-			//inform our KVO Controllers that we've changed
+			//inform our KVO Controllers that we now have 
+			//RSS entries to display
 			[self willChangeValueForKey:@"newsFeed"];
 			[self didChangeValueForKey:@"newsFeed"];
 		}];

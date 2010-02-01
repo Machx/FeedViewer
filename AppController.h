@@ -13,9 +13,11 @@
 	PSFeed * newsFeed;
 	NSOperationQueue *rssQueue;
 	NSError *feedError;
+	id psNotification;
 }
 @property(retain) NSOperationQueue *rssQueue;
 @property(retain) PSFeed *newsFeed;
 @property(retain) NSError *feedError;
+@property(retain) id psNotification;
 -(IBAction)startFeedRefresh:(id)sender;
 @end
