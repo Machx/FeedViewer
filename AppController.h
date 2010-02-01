@@ -10,12 +10,10 @@
 #import <PubSub/PubSub.h>
 
 @interface AppController : NSObject {
-	//NSArray *entries;
 	PSFeed * newsFeed;
 	NSOperationQueue *rssQueue;
 	NSError *feedError;
 }
-//@property(retain) NSArray *entries;
 @property(retain) NSOperationQueue *rssQueue;
 @property(retain) PSFeed *newsFeed;
 @property(retain) NSError *feedError;

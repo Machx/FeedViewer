@@ -29,7 +29,10 @@ static NSString * const kAppleRSSNewsFeed = @"http://images.apple.com/main/rss/h
 
 -(void)awakeFromNib
 {
-	[[NSNotificationCenter defaultCenter] addObserverForName:PSFeedRefreshingNotification object:newsFeed queue:rssQueue usingBlock:^(NSNotification *arg1) {
+	[[NSNotificationCenter defaultCenter] addObserverForName:PSFeedRefreshingNotification 
+													  object:newsFeed 
+													   queue:rssQueue 
+												  usingBlock:^(NSNotification *arg1) {
 		if ([newsFeed isRefreshing]) {
 			return;
 		}
