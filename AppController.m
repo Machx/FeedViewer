@@ -23,7 +23,7 @@ static NSString * const kAppleRSSNewsFeed = @"http://images.apple.com/main/rss/h
 		NSURL *feedURL = [NSURL URLWithString:kAppleRSSNewsFeed];
 		newsFeed = [[PSFeed alloc] initWithURL:feedURL];
 		rssQueue = [[NSOperationQueue alloc] init];
-		[rssQueue setName:@"com.FeedViewier.rssQueue"];
+		[rssQueue setName:@"com.FeedViewer.rssQueue"];
 		feedError = nil;
 		psNotification = nil;
 	}
